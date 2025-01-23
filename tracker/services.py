@@ -3,9 +3,9 @@ import requests
 from mnemonic import Mnemonic
 from eth_account import Account
 
-ETHERSCAN_API_KEY = "GT4XMIQBJMFXDG7XIM5YD62WADW67KBF3I"
+ETHERSCAN_API_KEY = ""
 
-INFURA_URL = "https://mainnet.infura.io/v3/1ea31bc81d3a413789fee2a626f53167" 
+INFURA_URL = "" 
 web3 = Web3(Web3.HTTPProvider(INFURA_URL))
 
 
