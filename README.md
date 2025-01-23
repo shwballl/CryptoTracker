@@ -1,4 +1,3 @@
-Sure! Here's a small README description for your GitHub project:
 
 ---
 
