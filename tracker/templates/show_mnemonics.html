@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Mnemonic Phrases</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background: linear-gradient(#0E101F, #3C4585);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .mnemonic {
+            margin-top: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .nav {
+            margin-top: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(to right, #121528, #0D186B);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .mnemonic:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Mnemonic Phrases</h1>
+        {% for mnemonic in mnemonics %}
+            <div class="mnemonic"><span id="phrase" onclick="copy()">{{ mnemonic.phrase }}</span></div>
+        {% endfor %}
+        <div class="nav">
+            <a href="/profile">Back</a>
+        </div>
+    </div>
+    <script>
+        function copy() {
+            const phrase = document.getElementById('phrase').innerText;
+            navigator.clipboard.writeText(phrase).then(() => {
+                alert('Mnemonic copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

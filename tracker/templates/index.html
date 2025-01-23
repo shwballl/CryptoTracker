@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Tracker</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(#0E101F, #3C4585);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .address:hover {
+            cursor: pointer;
+        }
+
+        .balance {
+            text-align: center;
+        }
+
+        .balance button{
+            border-radius: 10px;
+            border-style: none;
+            color: #fff;
+            font-size: 18px;
+            background: linear-gradient(to right, #121528, #0D186B);
+        }
+
+        .crypto-list {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            justify-content: space-around;
+        }
+
+        .crypto-list li {
+            margin: 10px 0;
+        }
+
+        .crypto-list img {
+            width: 30px;
+            height: 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .nav button {
+            background: linear-gradient(to right, #121528, #0D186B);
+            width: 90px;
+            height: 30px;
+            border-radius: 10px;
+            border-style: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .nav a{
+            color: white;
+            style: none;
+        }
+
+        .crypto {
+            display: flex;
+            flex-direction: row;
+            align-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="balance">
+            <h1>{{ balance|floatformat:2 }}$</h1>
+            {% if previous_wallet %}
+                <a href="{% url 'wallet_detail' previous_wallet.id %}"><button>&lt;</button></a>
+            {% endif %}
+            <span id="address" class="address" style="font-size: 10px;" onclick="copyAddress()">{{ address }}</span>
+            {% if next_wallet %}
+                <a href="{% url 'wallet_detail' next_wallet.id %}"><button>&gt;</button></a>
+            {% endif %}
+        </div>
+        <ul class="crypto-list">
+            <div class="crypto">
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="">
+                <li>Ethereum</li>
+            </div>
+            <p>{{ balance|floatformat:2 }}$</p>
+        </ul>
+        <div class="nav">
+            <button><a href="/">Home</a></button>
+            <button><a href="/profile">Profile</a></button>
+        </div>
+    </div>
+    <script>
+        function copyAddress() {
+            const address = document.getElementById('address').innerText;
+            navigator.clipboard.writeText(address).then(() => {
+                alert('Address copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

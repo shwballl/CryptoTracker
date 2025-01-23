@@ -1,0 +1,33 @@
+body {
+    background-color: #1a1a2e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #162447;
+    border-radius: 10px;
+}
+.balance {
+    text-align: center;
+}
+.crypto-list {
+    list-style-type: none;
+    padding: 0;
+}
+.crypto-list li {
+    margin: 10px 0;
+}
+.nav {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+}
